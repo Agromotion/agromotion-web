@@ -1,0 +1,253 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  color-scheme: dark;
+}
+
+/* ── Design tokens — espelho exacto do HTML de referência ── */
+.dark {
+  color-scheme: dark;
+  --background:    #0f0f0f;
+  --bg2:           #141414;
+  --bg3:           #1a1a1a;
+  --surface:       #1e1e1e;
+  --surf2:         #222222;
+  --foreground:    #e8e8e8;
+  --text2:         #888888;
+  --text3:         #555555;
+  --green:         #3dd44a;
+  --green-d:       #2ab835;
+  --green-m:       rgba(61,212,74,.10);
+  --border-c:      rgba(255,255,255,.07);
+  --border2-c:     rgba(255,255,255,.12);
+  --amber:         #d4a84b;
+  --card:          #1e1e1e;
+  --border:        rgba(255,255,255,.07);
+}
+
+.light {
+  color-scheme: light;
+  --background:    #f4f7fb;
+  --bg2:           #ffffff;
+  --bg3:           #eef2f7;
+  --surface:       #ffffff;
+  --surf2:         #f7f9fc;
+  --foreground:    #0f172a;
+  --text2:         #475569;
+  --text3:         #64748b;
+  --green:         #2f9f43;
+  --green-d:       #257c34;
+  --green-m:       rgba(47,159,67,.12);
+  --border-c:      rgba(15,23,42,.10);
+  --border2-c:     rgba(15,23,42,.18);
+  --amber:         #b9821f;
+  --card:          #ffffff;
+  --border:        rgba(15,23,42,.10);
+}
+
+@theme inline {
+  --font-sans:              'DM Sans', sans-serif;
+  --font-mono:              'DM Mono', monospace;
+  --color-background:       var(--background);
+  --color-bg2:              var(--bg2);
+  --color-bg3:              var(--bg3);
+  --color-surface:          var(--surface);
+  --color-surf2:            var(--surf2);
+  --color-foreground:       var(--foreground);
+  --color-text2:            var(--text2);
+  --color-text3:            var(--text3);
+  --color-green:            var(--green);
+  --color-green-d:          var(--green-d);
+  --color-green-m:          var(--green-m);
+  --color-border:           var(--border-c);
+  --color-border2:          var(--border2-c);
+  --color-amber:            var(--amber);
+  --color-card:             var(--card);
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  html {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--background);
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
+}
+
+.mobile-topbar {
+  display: none;
+}
+
+.sidebar,
+.sidebar-backdrop {
+  display: none !important;
+}
+
+.app-shell,
+.app-shell *::before,
+.app-shell *::after,
+.app-shell * {
+  transition-property: background-color, color, border-color, fill, stroke, box-shadow;
+  transition-duration: .38s;
+  transition-timing-function: cubic-bezier(.22, .61, .36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-shell,
+  .app-shell *::before,
+  .app-shell *::after,
+  .app-shell * {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .section {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .topbar {
+    display: none !important;
+  }
+
+  .mobile-topbar {
+    display: flex !important;
+  }
+
+  .sidebar {
+    display: flex !important;
+    transform: translateX(-100%);
+    transition: transform .2s ease;
+    z-index: 130 !important;
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    background: rgba(0, 0, 0, .5);
+    border: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+  }
+
+  .sidebar-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .section {
+    padding: 56px 24px !important;
+  }
+
+  .about-grid,
+  .team-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .telemetry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .telemetry-toolbar {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+
+  .telemetry-note {
+    max-width: none !important;
+  }
+
+  .app-footer {
+    padding: 24px !important;
+    justify-content: flex-start !important;
+  }
+
+  .app-footer p {
+    text-align: left !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-topbar {
+    height: 48px !important;
+  }
+
+  .section {
+    padding: 48px 18px !important;
+  }
+
+  .hero-section {
+    min-height: calc(100vh - 48px) !important;
+  }
+
+  .hero-meta-grid > div {
+    min-width: 48% !important;
+    border-right: none !important;
+  }
+
+  .robot-features > div,
+  .app-features > div,
+  .repo-row,
+  .repositories-row {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .repositories-quickstart-head {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 8px;
+  }
+
+  .team-collab {
+    align-items: flex-start !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: 44px 14px !important;
+  }
+
+  .mobile-topbar {
+    padding: 0 12px !important;
+  }
+
+  .telemetry-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .telemetry-periods {
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-grid > div {
+    min-width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  .app-footer {
+    padding: 18px 14px !important;
+  }
+}
