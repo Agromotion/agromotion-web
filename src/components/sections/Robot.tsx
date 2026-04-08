@@ -1,12 +1,12 @@
 const FEATURES = [
-  { title: 'Motores de precisão',              desc: 'Activação controlada do mecanismo de movimento, com tolerâncias ajustáveis para horários ou por comando imediato.' },
+  { title: 'Motores de precisão',              desc: 'Ativação controlada do mecanismo de movimento, com tolerâncias ajustáveis para horários ou por controlo imediato.' },
   { title: 'Módulo de câmara',                 desc: 'Captura e streaming integrado para monitorização visual remota.' },
-  { title: 'Sincronização em tempo real',      desc: 'Ligação persistente ao Firebase Firestore. O robot escuta alterações de horário ou comandos manuais e executa-os sem intervenção adicional.' },
+  { title: 'Sincronização em tempo real',      desc: 'Ligação persistente ao Firebase Firestore. O robô escuta alterações de horário ou comandos manuais e executa-os sem intervenção adicional.' },
   { title: 'Telemetria contínua',              desc: 'Publica periodicamente métricas de saúde do sistema: Bateria, CPU, temperatura, RAM, sinal Wi-Fi e latência para consulta no painel da app e deste website.' },
   { title: 'Resiliência e arranque automático', desc: 'Horários guardados localmente para garantir operação mesmo sem ligação à internet. Serviço de sistema com reinício automático em caso de falha.' },
 ]
 
-const STACK = ['Python 3', 'C++ / Arduino', 'Raspberry Pi', 'Firebase Admin SDK', 'Camera Module', 'GPIO', 'Embedded Linux']
+const STACK = ['Python', 'C++ / Arduino', 'Raspberry Pi', 'Firebase Admin SDK', 'Camera Module', 'GPIO', 'Embedded Linux']
 
 export default function Robot() {
   return (

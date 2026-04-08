@@ -85,6 +85,61 @@
   ::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
 }
 
+/* ── Estilos do logo IPCA do Hero ── */
+.ipca-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 13px 7px 8px;
+  border: 0.5px solid var(--border-c);
+  border-radius: 10px;
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  width: fit-content;  
+  width: 128px;
+  height: 64px;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.ipca-badge:hover {
+  background: color-mix(in srgb, var(--text3) 10%, transparent);
+  border-color: var(--border2-c);
+  transform: translateY(-1px);
+}
+
+.ipca-badge:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.ipca-icon-box {
+  width: 128px;
+  height: 64px;
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--text3) 12%, transparent);
+  border: 0.5px solid var(--border-c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ipca-badge img {
+  height: auto;
+  object-fit: contain;
+}
+
+
+.ipca-badge:hover{
+  transform: translate(2px, -2px);
+  color: var(--text2);
+}
+
+/* --------------- */
+
 .mobile-topbar {
   display: none;
 }
@@ -243,7 +298,7 @@
   }
 
   .hero-meta-grid > div {
-    min-width: 100% !important;
+    min-width: 100% !important; 
     padding-right: 0 !important;
   }
 

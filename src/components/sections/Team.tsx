@@ -1,6 +1,6 @@
 const MEMBERS = [
-  { initials: 'JF', name: 'Júlio Faria', role: 'Firmware & Hardware', desc: 'Responsável pela construção física do robô, eletrónica, montagem mecânica, lógica de controlo em Arduino e Raspberry Pi. Implementa a ponte entre o hardware e a cloud, garantindo que os comandos remotos se traduzem em ações precisas no robô.', tags: ['Arduino', 'Raspberry Pi', 'Python', 'C++', 'Eletrónica', 'Motores'] },
-  { initials: 'MA', name: 'Miguel Areal', role: 'Software & Backend', desc: 'Responsável pelo desenvolvimento da aplicação multiplataforma e pela arquitetura cloud. Define como os dados fluem entre o utilizador, o Firebase e o robô, desde a autenticação até às notificações e ao painel de telemetria em tempo real.', tags: ['Flutter', 'Dart', 'Firebase', 'Firestore', 'FCM', 'JavaScript'] },
+  { initials: 'JF', name: 'Júlio Faria', role: 'Firmware & Hardware', desc: 'Responsável pela construção física do robô, eletrónica, montagem mecânica, lógica de controlo em Arduino e Raspberry Pi. Implementa a ponte entre o hardware e a cloud, garantindo que os comandos remotos se traduzem em ações precisas no robô.', tags: ['Arduino', 'Raspberry Pi', 'Python', 'C++', 'Eletrónica', 'Modelação 3D'] },
+  { initials: 'MA', name: 'Miguel Areal', role: 'Software & Backend', desc: 'Responsável pelo desenvolvimento da aplicação multiplataforma e pela arquitetura cloud. Define como os dados fluem entre o utilizador, o Firebase e o robô, desde a autenticação até às notificações e ao painel de telemetria em tempo real.', tags: ['Flutter', 'Dart', 'Firebase', 'Firestore', 'JavaScript','C++'] },
 ]
 
 const tag: React.CSSProperties = { fontSize: 11, fontFamily: 'DM Mono, monospace', color: 'var(--text3)', background: 'var(--bg3)', border: '1px solid var(--border-c)', padding: '3px 9px', borderRadius: 5 }
@@ -9,7 +9,7 @@ export default function Team() {
   return (
     <section id="team" className="section team-section" style={{ padding: '72px 40px', borderBottom: '1px solid var(--border-c)', background: 'var(--bg2)' }}>
       <SectionTag>Equipa</SectionTag>
-      <h2 style={{ fontSize: 'clamp(28px,4vw,44px)', fontWeight: 600, lineHeight: 1.1, letterSpacing: '-.02em', marginBottom: 16 }}>Dois alunos, dois domínios.</h2>
+      <h2 style={{ fontSize: 'clamp(28px,4vw,44px)', fontWeight: 600, lineHeight: 1.1, letterSpacing: '-.02em', marginBottom: 16 }}>Dois domínios.</h2>
       <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text2)', maxWidth: 640, fontWeight: 300, marginBottom: 40 }}>
         A divisão do trabalho reflete as duas camadas do sistema: Quem constrói o hardware e quem desenvolve o software que o controla.
       </p>

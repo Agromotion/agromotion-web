@@ -1,6 +1,7 @@
 import type { SectionId } from '@/App'
 import logo from '@/assets/logo.png'
 import { Moon, Sun } from 'lucide-react'
+import { useTheme } from '../../theme-provider'
 
 const LINKS: Array<{ id: SectionId; label: string }> = [
   { id: 'hero',         label: 'Início' },
@@ -29,13 +30,12 @@ function TopLink(props: { id: SectionId; label: string; active: boolean }) {
   )
 }
 
-interface TopbarProps {
-  active: SectionId
-  theme: 'dark' | 'light'
-  onToggleTheme: () => void
-}
+export default function Topbar({ active }: { active: SectionId }) {
+  const { theme, setTheme } = useTheme()
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
 
-export default function Topbar({ active, theme, onToggleTheme }: TopbarProps) {
   return (
     <header className="topbar" style={{
       position: 'sticky', top: 0, zIndex: 50,
@@ -49,8 +49,8 @@ export default function Topbar({ active, theme, onToggleTheme }: TopbarProps) {
     }}>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 9, flexShrink: 0 }} className="topbar-brand">
-        <img src={logo} alt="Agromotion" style={{ width: 24, height: 24, objectFit: 'contain' }} />
-        <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--foreground)', whiteSpace: 'nowrap' }}>Agromotion</span>
+        <img src={logo} alt="Agromotion" style={{ width: 64, height: 64, objectFit: 'contain' }} />
+        <span style={{ fontSize: 20, fontWeight: 600, color: 'var(--foreground)', whiteSpace: 'nowrap' }}>Agromotion</span>
       </div>
 
       <nav style={{ display: 'flex', alignItems: 'center', gap: 2, flex: 1, justifyContent: 'center' }} className="topbar-nav">
@@ -62,7 +62,7 @@ export default function Topbar({ active, theme, onToggleTheme }: TopbarProps) {
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }} className="topbar-actions">
         <button
           type="button"
-          onClick={onToggleTheme}
+          onClick={toggleTheme}
           aria-label={theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'}
           style={{
             width: 30,

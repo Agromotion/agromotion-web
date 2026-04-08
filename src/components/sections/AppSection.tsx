@@ -12,7 +12,7 @@ export default function AppSection() {
   return (
     <section id="app" className="section app-section" style={{ padding: '72px 40px', borderBottom: '1px solid var(--border-c)', background: 'var(--bg2)' }}>
       <SectionTag>agromotion-app</SectionTag>
-      <h2 style={{ fontSize: 'clamp(28px,4vw,44px)', fontWeight: 600, lineHeight: 1.1, letterSpacing: '-.02em', marginBottom: 16 }}>Uma app. Várias plataformas.</h2>
+      <h2 style={{ fontSize: 'clamp(28px,4vw,44px)', fontWeight: 600, lineHeight: 1.1, letterSpacing: '-.02em', marginBottom: 16 }}>Controlo em todo o lado.</h2>
       <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text2)', maxWidth: 640, fontWeight: 300, marginBottom: 40 }}>
         Desenvolvida em Flutter para funcionar nativamente em Android, iOS e Windows a partir de uma única codebase. Toda a comunicação com o robô passa pelo Firebase.
       </p>
@@ -32,7 +32,7 @@ export default function AppSection() {
 
       <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 8 }}>
         {STACK.map((s) => (
-          <span key={s} style={{ fontSize: 11, fontFamily: 'DM Mono, monospace', color: 'var(--text3)', background: 'var(--surface)', border: '1px solid var(--border-c)', padding: '5px 12px', borderRadius: 6 }}>{s}</span>
+          <span key={s} style={{ fontSize: 11, fontFamily: 'DM Mono, monospace', color: 'var(--text3)', background: 'var(--surface)', border: '1px solid var(--border-c)', padding: '7px 12px', borderRadius: 6 }}>{s}</span>
         ))}
       </div>
     </section>

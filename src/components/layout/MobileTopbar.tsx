@@ -1,14 +1,20 @@
 import logo from '@/assets/logo.png'
 import { Menu, Moon, Sun, X } from 'lucide-react'
+import { useTheme } from '../../theme-provider' // Ajusta o caminho conforme necessário
 
 interface MobileTopbarProps {
   menuOpen: boolean
   onMenuToggle: () => void
-  theme: 'dark' | 'light'
-  onToggleTheme: () => void
 }
 
-export default function MobileTopbar({ menuOpen, onMenuToggle, theme, onToggleTheme }: MobileTopbarProps) {
+export default function MobileTopbar({ menuOpen, onMenuToggle }: MobileTopbarProps) {
+  // Acedemos ao tema e à função de mudar o tema diretamente do Provider
+  const { theme, setTheme } = useTheme()
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
+
   return (
     <header
       className="mobile-topbar"
@@ -17,7 +23,7 @@ export default function MobileTopbar({ menuOpen, onMenuToggle, theme, onToggleTh
         top: 0,
         zIndex: 110,
         height: 52,
-        display: 'none',
+        display: 'none', // Lembra-te de gerir a visibilidade via CSS Media Queries
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0 14px',
@@ -32,9 +38,10 @@ export default function MobileTopbar({ menuOpen, onMenuToggle, theme, onToggleTh
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        {/* Botão de Tema */}
         <button
           type="button"
-          onClick={onToggleTheme}
+          onClick={toggleTheme}
           aria-label={theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'}
           style={{
             width: 34,
@@ -52,6 +59,7 @@ export default function MobileTopbar({ menuOpen, onMenuToggle, theme, onToggleTh
           {theme === 'dark' ? <Moon size={16} /> : <Sun size={16} />}
         </button>
 
+        {/* Botão de Menu */}
         <button
           type="button"
           aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
