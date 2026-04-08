@@ -1,7 +1,4 @@
 import React from 'react'
-import ipcaColor from '@/assets/ipca_color.png'
-import ipcaWhite from '@/assets/ipca_white.png'
-import { useTheme } from '@/theme-provider'
 import { IpcaBadge } from '../ui/ipca_badge'
 
 const META = [
@@ -13,12 +10,15 @@ const META = [
 
 const sec: React.CSSProperties = {
   minHeight: 'calc(100vh - 52px)',
-  display: 'flex', flexDirection: 'column', justifyContent: 'center',
-  padding: '72px 40px', borderBottom: '1px solid var(--border-c)',
+  display: 'flex', 
+  flexDirection: 'column', 
+  justifyContent: 'center',
+  padding: '72px 40px', 
+  borderBottom: '1px solid var(--border-c)',
+  background: 'var(--bg2)' 
 }
 
 export default function Hero() {
-  const { theme } = useTheme()
 
   return (
     <section id="hero" className="section hero-section" style={sec}>
@@ -37,7 +37,7 @@ export default function Hero() {
       </p>
 
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' as const, marginBottom: 56 }}>
-        <a href="#about" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--green)', color: '#0a0a0a', fontSize: 13, fontWeight: 600, padding: '11px 22px', borderRadius: 8, textDecoration: 'none' }}>
+        <a href="#about" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--green-d)', color: '#ffffff', fontSize: 13, fontWeight: 600, padding: '11px 22px', borderRadius: 8, textDecoration: 'none' }}>
           Conhecer o projeto
         </a>
         <a href="https://github.com/Agromotion" target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'transparent', color: 'var(--text2)', fontSize: 13, padding: '11px 22px', borderRadius: 8, textDecoration: 'none', border: '1px solid var(--border2-c)' }}>

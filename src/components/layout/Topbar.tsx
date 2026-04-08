@@ -1,7 +1,7 @@
 import type { SectionId } from '@/App'
 import logo from '@/assets/logo.png'
 import { Moon, Sun } from 'lucide-react'
-import { useTheme } from '../../theme-provider'
+import { useTheme } from '../../providers/theme-provider'
 
 const LINKS: Array<{ id: SectionId; label: string }> = [
   { id: 'hero',         label: 'Início' },

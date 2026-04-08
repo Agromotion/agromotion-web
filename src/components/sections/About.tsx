@@ -1,4 +1,5 @@
 import { AppMockup } from "../ui/appmockup"
+import SectionTag from "../ui/SectionTag"
 
 const PILLARS = [
   { num: '01 — Hardware', title: 'Agromotion Robot', desc: 'O hardware do projeto. Um sistema embebido capaz de processar comandos remotos e executar a alimentação com precisão - motores, câmara e comunicação em tempo real com a cloud.', tags: ['Arduino', 'Raspberry Pi', 'Python', 'Câmara'], authors: ['Júlio Faria'], wide: false },
@@ -11,12 +12,12 @@ const tagGreen: React.CSSProperties = { ...tag, color: 'var(--green)', backgroun
 
 export default function About() {
   return (
-    <section id="about" className="section about-section" style={{ padding: '72px 40px', borderBottom: '1px solid var(--border-c)' }}>
+    <section id="about" className="section about-section" style={{ padding: '72px 40px', borderBottom: '1px solid var(--border-c)'}}>
       <SectionTag>Sobre o Projeto</SectionTag>
       
       <div className="about-layout" style={{ 
         display: 'grid', 
-        gridTemplateColumns: '1fr 300px', // Coluna da esquerda para texto, direita para o mockup
+        gridTemplateColumns: '1fr 300px',
         gap: '60px',
         alignItems: 'start'
       }}>
@@ -59,14 +60,5 @@ export default function About() {
 
       </div>
     </section>
-  )
-}
-
-function SectionTag({ children }: { children: React.ReactNode }) {
-  return (
-    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 11, fontFamily: 'DM Mono, monospace', color: 'var(--green)', marginBottom: 20 }}>
-      <span style={{ width: 16, height: 1, background: 'var(--green)', display: 'inline-block' }} />
-      {children}
-    </div>
   )
 }

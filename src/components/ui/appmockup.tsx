@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import appLight from "@/assets/app_home_light.png"
 import appDark from "@/assets/app_home_dark.png"
-import { useTheme } from "../../theme-provider"
+import { useTheme } from "../../providers/theme-provider"
 
 function AppMockup() {
   const { theme } = useTheme()

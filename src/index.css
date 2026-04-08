@@ -306,3 +306,7 @@
     padding: 18px 14px !important;
   }
 }
+
+.robot-card:hover {
+  background: var(--bg3) !important;
+}

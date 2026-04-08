@@ -1,3 +1,5 @@
+import SectionTag from "../ui/SectionTag"
+
 const ITEMS = [
   { label: 'Instituição',        value: 'IPCA',                                sub: 'Instituto Politécnico do Cávado e do Ave' },
   { label: 'Curso',              value: 'Engenharia de Sistemas Informáticos',  sub: 'Regime Pós-Laboral' },
@@ -23,14 +25,5 @@ export default function Academic() {
         ))}
       </div>
     </section>
-  )
-}
-
-function SectionTag({ children }: { children: React.ReactNode }) {
-  return (
-    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 11, fontFamily: 'DM Mono, monospace', color: 'var(--green)', marginBottom: 20 }}>
-      <span style={{ width: 16, height: 1, background: 'var(--green)', display: 'inline-block' }} />
-      {children}
-    </div>
   )
 }

@@ -1,5 +1,5 @@
 // IpcaBadge.tsx
-import { useTheme } from '@/theme-provider'
+import { useTheme } from '@/providers/theme-provider'
 import ipcaColor from '@/assets/ipca_color.png'
 import ipcaWhite from '@/assets/ipca_white.png'
 

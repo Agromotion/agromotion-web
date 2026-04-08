@@ -1,3 +1,5 @@
+import SectionTag from "../ui/SectionTag"
+
 const MEMBERS = [
   { initials: 'JF', name: 'Júlio Faria', role: 'Firmware & Hardware', desc: 'Responsável pela construção física do robô, eletrónica, montagem mecânica, lógica de controlo em Arduino e Raspberry Pi. Implementa a ponte entre o hardware e a cloud, garantindo que os comandos remotos se traduzem em ações precisas no robô.', tags: ['Arduino', 'Raspberry Pi', 'Python', 'C++', 'Eletrónica', 'Modelação 3D'] },
   { initials: 'MA', name: 'Miguel Areal', role: 'Software & Backend', desc: 'Responsável pelo desenvolvimento da aplicação multiplataforma e pela arquitetura cloud. Define como os dados fluem entre o utilizador, o Firebase e o robô, desde a autenticação até às notificações e ao painel de telemetria em tempo real.', tags: ['Flutter', 'Dart', 'Firebase', 'Firestore', 'JavaScript','C++'] },
@@ -44,14 +46,5 @@ export default function Team() {
         </p>
       </div>
     </section>
-  )
-}
-
-function SectionTag({ children }: { children: React.ReactNode }) {
-  return (
-    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 11, fontFamily: 'DM Mono, monospace', color: 'var(--green)', marginBottom: 20 }}>
-      <span style={{ width: 16, height: 1, background: 'var(--green)', display: 'inline-block' }} />
-      {children}
-    </div>
   )
 }

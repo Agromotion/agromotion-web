@@ -1,3 +1,5 @@
+import SectionTag from "../ui/SectionTag"
+
 const FEATURES = [
   { num: '01', title: 'Dashboard e controlo manual',  badge: 'Home',         desc: 'Estado do robô em tempo real, com acesso rápido ao nível de bateria e ao mapa de localização.' },
   { num: '02', title: 'Agendamento de horários',      badge: 'Agenda',       desc: 'Criar horários recorrentes com seleção de dias da semana. Ativar e desativar sem apagar, sincronização instantânea com o robô e outros utilizadores.' },
@@ -36,14 +38,5 @@ export default function AppSection() {
         ))}
       </div>
     </section>
-  )
-}
-
-function SectionTag({ children }: { children: React.ReactNode }) {
-  return (
-    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: 11, fontFamily: 'DM Mono, monospace', color: 'var(--green)', marginBottom: 20 }}>
-      <span style={{ width: 16, height: 1, background: 'var(--green)', display: 'inline-block' }} />
-      {children}
-    </div>
   )
 }

@@ -1,6 +1,6 @@
 import logo from '@/assets/logo.png'
 import { Menu, Moon, Sun, X } from 'lucide-react'
-import { useTheme } from '../../theme-provider' // Ajusta o caminho conforme necessário
+import { useTheme } from '../../providers/theme-provider' // Ajusta o caminho conforme necessário
 
 interface MobileTopbarProps {
   menuOpen: boolean
