@@ -8,7 +8,6 @@ import {
   query, 
   orderBy, 
   limit, 
-  getDocs,
   where,
   Timestamp 
 } from 'firebase/firestore'
@@ -65,45 +64,40 @@ export function TelemetryProvider({ children }: { children: React.ReactNode }) {
     return () => unsubLive();
   }, []);
 
-  // 2. Lógica de Histórico Reativa ao Período
   useEffect(() => {
-    const fetchHistory = async () => {
       setLoading(true);
-      try {
-        let q;
-        const historyRef = collection(db, 'robots', 'agromotion-robot-01', 'telemetry-history');
+      const historyRef = collection(db, 'robots', 'agromotion-robot-01', 'telemetry-history');
+      let q;
 
-        if (period === 'Ao vivo') {
-          // No modo "Ao vivo", mostramos apenas os últimos 20 pontos para o gráfico ser fluido
-          q = query(historyRef, orderBy('timestamp', 'desc'), limit(20));
-        } else {
-          // Calcular o timestamp de corte baseado no período
-          const cutoff = new Date();
-          if (period === '24H') cutoff.setHours(cutoff.getHours() - 24);
-          else if (period === '7 dias') cutoff.setDate(cutoff.getDate() - 7);
-          else if (period === '30 dias') cutoff.setDate(cutoff.getDate() - 30);
+      // 1. Definir a Query
+      if (period === 'Ao vivo') {
+        q = query(historyRef, orderBy('timestamp', 'desc'), limit(20));
+      } else {
+        const cutoff = new Date();
+        if (period === '24H') cutoff.setHours(cutoff.getHours() - 24);
+        else if (period === '7 dias') cutoff.setDate(cutoff.getDate() - 7);
+        else if (period === '30 dias') cutoff.setDate(cutoff.getDate() - 30);
 
-          q = query(
-            historyRef, 
-            where('timestamp', '>=', Timestamp.fromDate(cutoff)),
-            orderBy('timestamp', 'asc')
-          );
-        }
+        q = query(
+          historyRef,
+          where('timestamp', '>=', Timestamp.fromDate(cutoff)),
+          orderBy('timestamp', 'asc')
+        );
+      }
 
-        const snapshot = await getDocs(q);
+      // 2. USAR onSnapshot EM VEZ DE getDocs
+      const unsubHistory = onSnapshot(q, (snapshot) => {
         const docs = snapshot.docs.map(d => ({ ...d.data() }) as TelemetryData);
         
-        // Se for "Ao vivo", fazemos reverse para a ordem ser cronológica no gráfico (esquerda para a direita)
         setHistory(period === 'Ao vivo' ? docs.reverse() : docs);
-      } catch (error) {
-        console.error("Erro ao procurar histórico:", error);
-      } finally {
         setLoading(false);
-      }
-    };
+      }, (error) => {
+        console.error("Erro no stream de histórico:", error);
+        setLoading(false);
+      });
 
-    fetchHistory();
-  }, [period]);
+      return () => unsubHistory();
+    }, [period]);
 
   return (
     <TelemetryContext.Provider value={{ live, history, loading, period, setPeriod }}>

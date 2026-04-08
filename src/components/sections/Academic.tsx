@@ -1,4 +1,4 @@
-import SectionTag from "../ui/SectionTag"
+import SectionTag from "../ui/section_tag"
 
 const ITEMS = [
   { label: 'Instituição',        value: 'IPCA',                                sub: 'Instituto Politécnico do Cávado e do Ave' },

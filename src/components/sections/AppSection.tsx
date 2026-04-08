@@ -1,4 +1,4 @@
-import SectionTag from "../ui/SectionTag"
+import SectionTag from "../ui/section_tag"
 
 const FEATURES = [
   { num: '01', title: 'Dashboard e controlo manual',  badge: 'Home',         desc: 'Estado do robô em tempo real, com acesso rápido ao nível de bateria e ao mapa de localização.' },

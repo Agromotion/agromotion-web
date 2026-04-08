@@ -1,4 +1,4 @@
-import SectionTag from "../ui/SectionTag"
+import SectionTag from "../ui/section_tag"
 
 const MEMBERS = [
   { initials: 'JF', name: 'Júlio Faria', role: 'Firmware & Hardware', desc: 'Responsável pela construção física do robô, eletrónica, montagem mecânica, lógica de controlo em Arduino e Raspberry Pi. Implementa a ponte entre o hardware e a cloud, garantindo que os comandos remotos se traduzem em ações precisas no robô.', tags: ['Arduino', 'Raspberry Pi', 'Python', 'C++', 'Eletrónica', 'Modelação 3D'] },

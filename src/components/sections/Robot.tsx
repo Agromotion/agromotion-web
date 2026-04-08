@@ -1,4 +1,4 @@
-import SectionTag from "../ui/SectionTag"
+import SectionTag from "../ui/section_tag"
 
 const FEATURES = [
   {
