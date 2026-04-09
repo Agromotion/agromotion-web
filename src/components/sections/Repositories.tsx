@@ -1,4 +1,4 @@
-import { Cpu, Smartphone, Github, type LucideIcon } from 'lucide-react'
+import { Cpu, Smartphone, Github, type LucideIcon, Globe } from 'lucide-react'
 
 interface Repo {
   Icon: LucideIcon
@@ -10,6 +10,7 @@ interface Repo {
 const REPOS: Repo[] = [
   { Icon: Cpu,        name: 'agromotion-robot', desc: 'Firmware do robô.', url: 'https://github.com/Agromotion/agromotion-robot' },
   { Icon: Smartphone, name: 'agromotion-app', desc: 'Aplicação de controlo.', url: 'https://github.com/Agromotion/agromotion-app' },
+  { Icon: Globe, name: 'agromotion.github.io', desc: 'Website informativo.', url: 'https://github.com/Agromotion/agromotion.github.io' },  
   { Icon: Github,     name: 'Agromotion', desc: 'Organização GitHub · Todos os repositórios do projeto', url: 'https://github.com/Agromotion' },
 ]
 
