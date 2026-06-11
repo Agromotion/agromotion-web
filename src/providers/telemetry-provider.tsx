@@ -66,7 +66,7 @@ export function TelemetryProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
       setLoading(true);
-      const historyRef = collection(db, 'robots', 'agromotion-robot-01', 'telemetry-history');
+      const historyRef = collection(db, 'robots', 'agromotion-robot-01', 'telemetry_history');
       let q;
 
       // 1. Definir a Query

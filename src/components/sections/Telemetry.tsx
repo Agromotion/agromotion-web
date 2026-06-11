@@ -1,5 +1,5 @@
 import { useTelemetry } from '@/providers/telemetry-provider'
-import { AreaChart, Area, ResponsiveContainer, Tooltip,  XAxis } from 'recharts'
+import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import SectionTag from '../ui/section_tag'
 
 export default function Telemetry() {
@@ -9,10 +9,23 @@ export default function Telemetry() {
   // Função para formatar a data do Firebase para o Gráfico
   const formatXAxis = (timestamp: any) => {
     if (!timestamp) return ''
-    const date = timestamp.toDate()
+    
+    const date = typeof timestamp.toDate === 'function' 
+      ? timestamp.toDate() 
+      : timestamp.seconds 
+        ? new Date(timestamp.seconds * 1000) 
+        : new Date(timestamp)
+
+    if (isNaN(date.getTime())) return ''
     
     if (period === 'Ao vivo') {
       return date.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+    }
+    if (period === '24H') {
+      return date.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })
+    }
+    if (period === '7 dias') {
+      return date.toLocaleString('pt-PT', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
     }
     return date.toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit' })
   }
@@ -24,7 +37,6 @@ export default function Telemetry() {
       label: 'Bateria',
       unit: '%',
       color: live?.battery_is_charging ? 'var(--green)' : 'var(--text3)',
-      icon: '⚡',
       val: live?.battery_percentage ?? '—',
       sub: live?.battery_is_charging ? 'A carregar' : 'A descarregar'
     },
@@ -34,7 +46,6 @@ export default function Telemetry() {
       label: 'CPU',
       unit: '%',
       color: 'var(--foreground)',
-      icon: '⚙️',
       val: live?.system_cpu ?? '—',
       sub: 'Utilização total'
     },
@@ -44,7 +55,6 @@ export default function Telemetry() {
       label: 'Temperatura',
       unit: '°C',
       color: 'var(--amber)',
-      icon: '🌡️',
       val: live?.system_temperature?.toFixed(1) ?? '—',
       sub: 'Sensor de sistema'
     },
@@ -54,7 +64,6 @@ export default function Telemetry() {
       label: 'RAM',
       unit: '%',
       color: 'var(--foreground)',
-      icon: '📊',
       val: live?.system_ram ?? '—',
       sub: 'Memória em uso'
     }
@@ -69,7 +78,7 @@ export default function Telemetry() {
           <div>
             <h2 className="text-4xl font-bold tracking-tighter text-foreground">Diagnóstico</h2>
             <p className="text-text3 font-mono text-[10px] uppercase tracking-[0.2em] mt-1">
-              {systemOk ? '● Sistema Online' : '○ Sistema Offline'}
+              {systemOk ? '● Online' : '○ Offline'}
             </p>
           </div>
 
@@ -91,7 +100,7 @@ export default function Telemetry() {
             <div key={m.id} className="bg-surface border border-border rounded-2xl p-5 hover:border-green/30 transition-colors group">
               <div className="flex justify-between items-center mb-6">
                 <span className="text-[16px] font-mono text-text3 uppercase tracking-wider flex items-center gap-2">
-                  <span style={{ color: m.color }}>{m.icon}</span> {m.label}
+                  <span style={{ color: m.color }}>{m.label}</span>
                 </span> 
               </div>
 
@@ -106,10 +115,14 @@ export default function Telemetry() {
               {/* Gráfico com Eixo de Data/Hora */}
               <div className="h-20 w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={history.map(h => ({
-                    val: h[m.key] || 0,
-                    time: formatXAxis(h.timestamp)
-                  }))}>
+                  <AreaChart 
+                    margin={{ top: 10, right: 5, bottom: 5, left: 5 }}
+                    data={history.map(h => ({
+                      val: Number(h[m.key]) || 0,
+                      time: formatXAxis(h.timestamp)
+                    }))}
+                  >
+                    <YAxis hide domain={['dataMin - 1', 'dataMax + 1']} />
                     <XAxis 
                       dataKey="time" 
                       hide={false} 
@@ -132,10 +145,11 @@ export default function Telemetry() {
                       type="monotone" 
                       dataKey="val" 
                       stroke={m.color} 
-                      fill={m.color} 
-                      fillOpacity={0.05} 
+                      fill={m.color}
+                      fillOpacity={0.1}
                       strokeWidth={2} 
-                      dot={false}
+                      dot={{ r: 2, fill: m.color, strokeWidth: 0 }}
+                      activeDot={{ r: 5, fill: m.color, stroke: 'var(--surface)', strokeWidth: 2 }}
                       isAnimationActive={false}
                     />
                   </AreaChart>

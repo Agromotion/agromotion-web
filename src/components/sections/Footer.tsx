@@ -13,7 +13,6 @@ function Footer() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--green)', display: 'inline-block' }} />
               <span style={{ fontSize: 14, fontWeight: 600 }}>Agromotion</span>
-              <span style={{ fontSize: 11, fontFamily: 'DM Mono, monospace', color: 'var(--text3)' }}>v1.0.0</span>
             </div>
             <p style={{ fontSize: 11, fontFamily: 'DM Mono, monospace', color: 'var(--text3)', textAlign: 'right', lineHeight: 1.7 }}>
               IPCA · Engenharia de Sistemas Informáticos<br />

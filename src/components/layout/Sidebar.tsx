@@ -28,7 +28,7 @@ const NAV: NavGroup[] = [
     ],
   },
   {
-    group: 'Código',
+    group: 'Código Aberto',
     items: [
       { id: 'repositories', label: 'Repositórios', Icon: GitBranch },
     ],

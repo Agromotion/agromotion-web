@@ -11,7 +11,7 @@ const LINKS: Array<{ id: SectionId; label: string }> = [
   { id: 'app',          label: 'App' },
   { id: 'telemetry',    label: 'Telemetria' },
   { id: 'academic',     label: 'IPCA' },
-  { id: 'repositories', label: 'Código' },
+  { id: 'repositories', label: 'Código Aberto' },
 ]
 
 function TopLink(props: { id: SectionId; label: string; active: boolean }) {
